@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{company.fantasyName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <div class="box">
+    <flash-card>
+      <div class="flash-card-front">
+        <img src = {{company.screen}}>  
+      </div>
+    
+      <div class="flash-card-back">
+        <ion-list>
+          <ion-item>{{company.name}}</ion-item>
+          <ion-item>Sala: {{company.room}}</ion-item>
+          <ion-item>Ramal: {{company.phone}}</ion-item>
+          <ion-item>CNPJ: {{company.cnpj}}</ion-item>
+          <ion-item *ngFor="let email of company.email; let i = index" >
+            <ion-icon name="arrow-dropright-circle" item-left></ion-icon>
+                Email{{i}}: {{email}}
+          </ion-item>
+          <ion-item>Data de Entrada PCTEC: {{company.entrance}}</ion-item>
+          <ion-item>Data de Abertura: {{company.openData}}</ion-item>
+          <h1>Contato:</h1>
+          <ion-item *ngFor="let people of company.contactName; let i = index" >
+            {{people}}
+            {{company.contactPhone[i]}}
+          </ion-item>
+          <p>{{company.description}}</p>
+        </ion-list>
+      </div>
+    </flash-card>
+  </div>
+</ion-content>

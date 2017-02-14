@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ramais e contatos do CDT/UnB</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="flagRamal">
+      <ion-segment-button value="CDT">
+        CDT
+      </ion-segment-button>
+      <ion-segment-button value="PCTEC">
+        Parque Tecnológico
+      </ion-segment-button>
+      <ion-segment-button value="multi">
+        Multincubadora
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding class="action-sheets-basic-page">
+  <div [ngSwitch]="flagRamal">
+    <ion-list *ngSwitchCase="'CDT'">
+      <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+      <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+      </div>
+      <button ion-item *ngFor="let item of items" (click)="openNavDetailsPage(item)">
+        <ion-icon name="arrow-dropright-circle" item-left></ion-icon>
+        {{item.title}}
+      </button>
+    </ion-list>
+    <ion-list *ngSwitchCase="'PCTEC'">
+      <ion-item *ngFor="let company of pctec_list; let i = index">
+        <button ion-button block (click)="openMenuPctec(i)">
+          {{company.fantasyName}}
+        </button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

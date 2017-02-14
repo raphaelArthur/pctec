@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Parque Tecnológico</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <ion-list>
+    <button ion-item *ngFor="let company of pctec_list" (click)="openNavDetailsPage(company)" icon-left>
+       <ion-icon name="arrow-dropright-circle" item-left></ion-icon>
+        {{company.fantasyName}}
+    </button>
+  </ion-list>
+</ion-content>
